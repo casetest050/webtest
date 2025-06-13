@@ -238,7 +238,7 @@
             var batchSize = 10;
             let currentNewsIndex = -1;
             $.ajax({
-                url: "https://kevinham218.github.io/webtest/data2.json?t=" + new Date().getTime(),
+                url: "https://casetest050.github.io/webtest/data2.json?t=" + new Date().getTime(),
                 method: "GET",
                 success: function (data) {
                     $("#logo_img").attr("src", data[0].logo_img);
@@ -250,7 +250,7 @@
                 }
             });
             $.ajax({
-                url: "https://kevinham218.github.io/webtest/data3.json?t=" + new Date().getTime(),
+                url: "https://casetest050.github.io/webtest/data3.json?t=" + new Date().getTime(),
                 method: "GET",
                 success: function (data) {
                     console.log(data);
@@ -444,7 +444,7 @@
                 let fileLink = '';
                 if (item.file_name && item.file_name.trim() !== '') {
                     const fileName = item.file_name.trim().toLowerCase();
-                    const fileUrl = `https://kevinham218.github.io/webtest/files/${item.file_name}`;
+                    const fileUrl = `https://casetest050.github.io/webtest/files/${item.file_name}`;
                     const imageExtensions = ['.jpg', '.jpeg', '.png', '.gif', '.bmp', '.webp'];
 
                     const isImage = imageExtensions.some(ext => fileName.endsWith(ext));
@@ -492,7 +492,7 @@
                 let fileLink = '';
                 if (item.file_name && item.file_name.trim() !== '') {
                     const fileName = item.file_name.trim().toLowerCase();
-                    const fileUrl = `https://kevinham218.github.io/webtest/files/${item.file_name}`;
+                    const fileUrl = `https://casetest050.github.io/webtest/files/${item.file_name}`;
                     const imageExtensions = ['.jpg', '.jpeg', '.png', '.gif', '.bmp', '.webp'];
                     const isImage = imageExtensions.some(ext => fileName.endsWith(ext));
 
@@ -532,7 +532,7 @@
             }
         function homeconten() {
             $.ajax({
-                url: "https://kevinham218.github.io/webtest/data.json?t=" + new Date().getTime(),
+                url: "https://casetest050.github.io/webtest/data.json?t=" + new Date().getTime(),
                 method: "GET",
                 success: function (data) {
                     cdata = data;
