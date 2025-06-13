@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>屏東縣農業處碳排淨零平台</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <style>
+        .break-url {
+            word-break: break-all;
+            overflow-wrap: break-word;
+            display: inline-block;
+            max-width: 100%;
+        }
+        .navbar {
+            position: relative;
+            z-index: 1000;
+        }
+
+        .dropdown-menu {
+            z-index: 1050;
+        }
+        nav.navbar {
+            width: 100vw;
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+            border: none;
+        }
+
+        
+        .navbar .container-fluid {
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+        }
+
+        
+        .bg_red.container-fluid {
+            width: 100vw;
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+        }
+
+        .sidebar {
+            width: 250px;
+            min-height: 100vh;
+            background-color: #b30000;
+            color: white;
+        }
+
+        .sidebar .nav-link {
+            color: white;
+        }
+
+        .sidebar .nav-link.active {
+            background-color: #ffcccb;
+            color: #000;
+            font-weight: bold;
+        }
+
+        .sidebar .nav-link:hover {
+            background-color: #ff9999;
+            color: #000;
+        }
+
+        .bg_red {
+            background-image: url("https://res.cloudinary.com/dalb6hlr7/image/upload/v1749715172/bg_lujkfm.png");
+        }
+
+        .bgmosaic-box {
+            width: 100%;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .parent {
+            display: flex;
+            justify-content: center;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .news-main-title {
+            color: #a00;
+            font-weight: bold;
+        }
+
+        .news-list .news-title {
+            color: #a00;
+        }
+
+        .news-list li {
+            border-bottom: 1px dotted #ccc;
+            padding: 0.5rem 0;
+        }
+
+        .btn-more {
+            margin-top: 1rem;
+        }
+
+        .news-date {
+            color: #777;
+            font-size: 0.9rem;
+        }
+
+        .news-summary {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        a {
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="bg_red container-fluid">
+            <a href=""><img src="" alt="" class="img-fluid" style="width: 400px; margin: 10px; border: 3px solid #FFF;" id="logo_img"></a>
+            <!-- 輪播 -->
+            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators" id="carousel_indicators">
+                </div>
+                <div class="carousel-inner" id="carousel_id">
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+            <!-- 輪播結束 -->
+            <!-- <img src="" class="img-fluid rounded mx-auto d-block" alt="" style="width:  550px;" id="main_img"> -->
+            <nav class="navbar navbar-expand-lg navbar-light bgmosaic-box" style="background-color: #e3e6e6;">
+                <div class="container-fluid">
+                    <!-- <a class="navbar-brand nav-item" href="#">首頁</a> -->
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0 w-100 justify-content-evenly">
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="#" id="home"
+                                    style="font-size: 20px;">最新公告</a>
+                            </li>
+                            <!--若要新增導覽複製以下內容-->
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false" style="font-size: 20px;">
+                                    關於我們<!--導覽列的主標題-->
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <!--主標題下的子標題-->
+                                    <li><a class="dropdown-item" href="#" id="about1">首長介紹</a></li>
+                                    <li><a class="dropdown-item" href="#" id="about2">淨零轉型</a></li>
+                                    <li><a class="dropdown-item" href="#" id="about3">主要工作</a></li>
+                                    <li><a class="dropdown-item" href="#" id="about4">組織架構</a></li>
+                                    <li><a class="dropdown-item" href="#" id="about5">未來展望</a></li>
+                                    <li><a class="dropdown-item" href="#" id="about6">編制及設備</a></li>
+                                </ul>
+                            </li>
+                            <!--複製到這裡-->
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false" style="font-size: 20px;">
+                                    碳排資料庫
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <li><a class="dropdown-item" href="#" id="db1">屏東縣各鄉鎮農業碳足跡概況模組</a></li>
+                                    <li><a class="dropdown-item" href="#" id="db2">屏東縣各合作社碳足跡監控模組</a></li>
+                                    <li><a class="dropdown-item" href="#" id="db3">碳排分析結果</a></li>
+                                </ul>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+    </header>
+    <div id="content">
+        <div class="container" style="padding-top:2%;padding-left:3%;padding-bottom:3%;">
+            <!--布告欄-->
+            <img src="https://res.cloudinary.com/dalb6hlr7/image/upload/v1749629526/1749621727400_rcehss.png"
+                style="height: 60px;" alt="" class="img-fluid">
+            <hr>
+
+
+            <ul class="list-unstyled news-list" id="news-list">
+
+            </ul>
+
+            <div class="text-center">
+                <button class="btn btn-secondary btn-sm btn-more">更多</button>
+            </div>
+        </div>
+    </div>
+
+    <footer style="background-color: #e3e6e6;">
+        <div class="container-fluid">
+            <div style="padding: 10px;">
+                屏東縣農業處碳排淨零平台 版權所有<br>
+                地址：900219屏東市自由路527號<br>
+                電話：(08)732-0415<br>
+                傳真：(08) XXX XXXX<br>
+                服務時間：8:00~17:00<br>
+                傳真報案：(08) XXX XXXX<br>
+                <div id="update"></div>
+            </div>
+        </div>
+    </footer>
+    <Script>
+        $(document).ready(function () {
+            var cdata = [];
+            var cdata2 = [];
+            var currentIndex = 0;
+            var batchSize = 10;
+            let currentNewsIndex = -1;
+            $.ajax({
+                url: "https://kevinham218.github.io/webtest/data2.json?t=" + new Date().getTime(),
+                method: "GET",
+                success: function (data) {
+                    $("#logo_img").attr("src", data[0].logo_img);
+                    $("#main_img").attr("src", data[0].main_img);
+                    console.log(data[0].logo_img)
+                },
+                error: function (xhr, status, error) {
+                    console.error(error);
+                }
+            });
+            $.ajax({
+                url: "https://kevinham218.github.io/webtest/data3.json?t=" + new Date().getTime(),
+                method: "GET",
+                success: function (data) {
+                    console.log(data);
+                    cdata2 = data
+                    data.forEach(function (item, index) {
+                        // carousel indicators
+                        const isActive = index === 0 ? 'active' : '';
+                        $("#carousel_indicators").append(`
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="${index}" class="${isActive}" aria-label="Slide ${index + 1}" ${isActive ? 'aria-current="true"' : ''}></button>
+        `);
+
+                        // carousel images
+                        $("#carousel_id").append(`
+          <div class="carousel-item ${isActive}">
+            <img src="${item.img}" class="img-fluid rounded mx-auto d-block" alt="slide-${index}" style="width: 550px;border: 3px solid #FFF;" id="carousel_img${index}">
+          </div>
+        `);
+                    });
+                },
+                error: function (xhr, status, error) {
+                    console.error(error);
+                }
+            });
+            //這是關於我們-->左邊紅色導覽列
+            t = `<div class="container-fluid">
+  <div class="row">
+    <div class="col-12 col-md-2 bg-danger text-white p-3">
+      <h5 class="text-white d-none d-md-block">關於我們</h5>
+
+      <div class="d-flex flex-wrap flex-md-column justify-content-center justify-content-md-start">
+        <a class="btn btn-light m-1 w-auto w-md-100 text-start" data-page="about" href="#">首長介紹</a>
+        <a class="btn btn-light m-1 w-auto w-md-100 text-start" data-page="history" href="#">淨零轉型</a>
+        <a class="btn btn-light m-1 w-auto w-md-100 text-start" data-page="main" href="#">主要工作</a>
+        <a class="btn btn-light m-1 w-auto w-md-100 text-start" data-page="organize" href="#">組織架構</a>
+        <a class="btn btn-light m-1 w-auto w-md-100 text-start" data-page="future" href="#">未來展望</a>
+        <a class="btn btn-light m-1 w-auto w-md-100 text-start" data-page="machine" href="#">編制及設備</a>
+      </div>
+    </div>
+  </div>
+</div>`
+            
+            contentclass = `<div class="container" style="padding-top:2%;padding-left:3%;padding-bottom:3%;">
+            <!--布告欄-->
+            <img src="https://res.cloudinary.com/dalb6hlr7/image/upload/v1749629526/1749621727400_rcehss.png"
+                style="height: 60px;" alt="" class="img-fluid">
+            <hr>
+
+
+            <ul class="list-unstyled news-list" id="news-list">
+
+            </ul>
+
+            <div class="text-center">
+                <button class="btn btn-secondary btn-sm btn-more">更多</button>
+            </div>
+        </div>`
+            about1_content = `
+      <div class="col-12 col-md-9 p-4">
+        <div class="container">
+            <h3>首長介紹</h3>
+        <hr style="border: 1px solid red;">
+        <!--hr 是紅色分割線-->
+        <div class="h6"><span ><img src="https://res.cloudinary.com/dsas30xds/image/upload/v1749717203/%E5%91%A8%E6%98%A5%E7%B1%B3%E7%B8%A3%E9%95%B7_uaciy2.png" style="width: 164px;" alt=""></span></div>
+        <p style="margin: 21px 0; padding: 0; text-indent: 0; line-height: 1;">
+  <span id="isPasted" style="color: rgb(41, 105, 176); font-size: 1.5em;">主任:周春米</span>
+</p>
+        <div class="h6"><span style="font-size: 1.5em; color: rgb(243, 121, 52);">經歷 ：</span></div>
+        <div class="h6"><span style="font-size: 1.5em;">屏東縣縣長</span></div>
+        <div class="h6"><span style="font-size: 1.5em;">第10屆立法委員</span></div>
+        <div class="h6"><span style="font-size: 1.5em;">第9屆立法委員</span></div>
+        <div class="h6"><span style="font-size: 1.5em;">立法院民主進步黨黨團副書記長、副幹事長</span></div>
+        <div class="h6"><span style="font-size: 1.5em;">屏東律師公會第28屆理事長</span></div>
+        <div class="h6"><br></div>
+        <div class="h6"><span style="font-size: 1.5em; color: rgb(243, 121, 52);">現任 ：</span></div>
+        <div class="h6"><span style="font-size: 1.5em;">屏東縣縣長</span></div>
+        <div class="h6"><br></div>
+        <div class="h6"><span style="font-size: 1.5em; color: rgb(243, 121, 52);">學歷 ：</span></div>
+        <div class="h6"><span style="font-size: 1.5em;">立臺灣大學法律學系法學組</span></div>
+      </div>
+        <div class="h6"><br></div>
+      <div class="container">
+            <h3>執行秘書介紹</h3>
+        <hr style="border: 1px solid red;">
+        <div class="h6"><span ><img src="https://www-ws.pthg.gov.tw/Upload/2015pthg/22/ckfile/88dadaff-e868-4d31-af0e-d1c636c1f631@1024x768.jpg" style="width: 164px;" alt=""></span></div>
+        <p style="margin: 21px 0; padding: 0; text-indent: 0; line-height: 1;">
+  <span id="isPasted" style="color: rgb(41, 105, 176); font-size: 1.5em;">執行秘書:鄭永裕</span>
+</p>
+        <div class="h6"><span style="font-size: 1.5em; color: rgb(243, 121, 52);">經歷 ：</span></div>
+        <div class="h6"><span style="font-size: 1.5em;">屏東縣政府農業處處長</span></div>
+        <div class="h6"><span style="font-size: 1.5em;">屏東縣政府農業處副處長</span></div>
+        <div class="h6"><span style="font-size: 1.5em;">屏東縣政府農業產銷科科長</span></div>
+        <div class="h6"><span style="font-size: 1.5em;">屏東縣政府政府農業處農產運銷科科長</span></div>
+        <div class="h6"><span style="font-size: 1.5em;">90年中央暨地方機關公務人員升官等考試水產養殖職系薦任考試及格</span></div>
+        <div class="h6"><br></div>
+        <div class="h6"><span style="font-size: 1.5em; color: rgb(243, 121, 52);">現任 ：</span></div>
+        <div class="h6"><span style="font-size: 1.5em;">屏東縣政府農業處處長</span></div>
+        <div class="h6"><br></div>
+        <div class="h6"><span style="font-size: 1.5em; color: rgb(243, 121, 52);">學歷 ：</span></div>
+        <div class="h6"><span style="font-size: 1.5em;">國立中山大學海洋環境工程研究所碩士</span></div>
+      </div>
+              <div class="h6"><br></div>
+      <div class="container">
+            <h3>諮詢委員會介紹</h3>
+        <hr style="border: 1px solid red;">
+        <div class="h6"><span ><img src="https://fps.npust.edu.tw/wp-content/uploads/avatars/10793/5b0297ff1adb7-bpfull.jpg" style="width: 164px;" alt=""></span></div>
+        <p style="margin: 21px 0; padding: 0; text-indent: 0; line-height: 1;">
+  <span id="isPasted" style="color: rgb(41, 105, 176); font-size: 1.5em;">農產品碳足跡領域碳管理:彭克仲</span>
+</p>
+        <div class="h6"><span style="font-size: 1.5em; color: rgb(243, 121, 52);">經歷 ：</span></div>
+        <div class="h6"><span style="font-size: 1.5em;">國立屏東科技大學 農業推廣處處長</span></div>
+        <div class="h6"><span style="font-size: 1.5em;">國立屏東科技大學 農企業管理系系主任</span></div>
+        <div class="h6"><span style="font-size: 1.5em;">國立屏東科技大學 科技農業學士學位學程主任</span></div>
+        <div class="h6"><span style="font-size: 1.5em;">財團法人全球生物產業科技發展基金會董事</span></div>
+        <div class="h6"><span style="font-size: 1.5em;">台灣區農業合作社聯合社顧問</span></div>
+        <div class="h6"><br></div>
+        <div class="h6"><span style="font-size: 1.5em; color: rgb(243, 121, 52);">現任 ：</span></div>
+        <div class="h6"><span style="font-size: 1.5em;">國立屏東科技大學 農業推廣處處長</span></div>
+        <div class="h6"><span style="font-size: 1.5em;">國立屏東科技大學 科技農業學士學位學程主任</span></div>
+        <div class="h6"><span style="font-size: 1.5em;">國立屏東科技大學 智慧農業中心主任</span></div>
+        <div class="h6"><br></div>
+        <div class="h6"><span style="font-size: 1.5em; color: rgb(243, 121, 52);">學歷 ：</span></div>
+        <div class="h6"><span style="font-size: 1.5em;">國立中興大學 農業經濟 博士</span></div>
+      </div>
+         <div class="h6"><br></div>
+      <div class="container">
+            <h3>諮詢委員會介紹</h3>
+        <hr style="border: 1px solid red;">
+        <div class="h6"><span ><img src="https://abm.npust.edu.tw/wp-content/uploads/elementor/thumbs/%E9%8D%BE%E8%80%81%E5%B8%AB-qmq6ccj4zqs2w9mqa9kl4kc9put6vctumocb1myahs.png" style="width: 164px;" alt=""></span></div>
+        <p style="margin: 21px 0; padding: 0; text-indent: 0; line-height: 1;">
+  <span id="isPasted" style="color: rgb(41, 105, 176); font-size: 1.5em;">農民組織領域碳管理:鍾秋悅</span>
+</p>
+        <div class="h6"><span style="font-size: 1.5em; color: rgb(243, 121, 52);">經歷 ：</span></div>
+        <div class="h6"><span style="font-size: 1.5em;">國立屏東科技大學 農企業管理系系主任</span></div>
+        <div class="h6"><span style="font-size: 1.5em;">國立屏東科技大學 農企業管理系系教授</span></div>
+        <div class="h6"><span style="font-size: 1.5em;">日本國際協力機構研究所(JICA-RI)副研究員</span></div>
+        <div class="h6"><span style="font-size: 1.5em;">日本一橋大學公共政策研究所兼任講師</span></div>
+        <div class="h6"><span style="font-size: 1.5em;">行政院主計處三局三科(財經統計科)研究員</span></div>
+        <div class="h6"><br></div>
+        <div class="h6"><span style="font-size: 1.5em; color: rgb(243, 121, 52);">現任 ：</span></div>
+        <div class="h6"><span style="font-size: 1.5em;">屏東縣政府農業處處長</span></div>
+        <div class="h6"><span style="font-size: 1.5em;">國立屏東科技大學 科技農業學士學位學程主任</span></div>
+        <div class="h6"><br></div>
+        <div class="h6"><span style="font-size: 1.5em; color: rgb(243, 121, 52);">學歷 ：</span></div>
+        <div class="h6"><span style="font-size: 1.5em;">日本一橋大學 經濟系博士</span></div>
+      </div>
+      </div>
+    `
+            about2_content = `
+      <div class="col-12 col-md-9 p-4">
+        <h3>淨零轉型</h3>
+        <p>隨著全球邁向2050年淨零排放的浪潮，環境部於112年2月正式公告《氣候變遷因應法》，將減碳目標納入法規體系，彰顯臺灣對永續發展的高度重視。臺灣企業長年在全球供應鏈中扮演關鍵角色，面對國際品牌大廠日益嚴格的減碳要求，唯有加速推動企業淨零轉型，方能持續穩定取得訂單，鞏固競爭優勢。</p>
+        <p><img src='https://res.cloudinary.com/dsas30xds/image/upload/v1749807726/ChatGPT_Image_2025%E5%B9%B46%E6%9C%8813%E6%97%A5_%E4%B8%8B%E5%8D%8805_40_53_j5ivzw.png'style='height: 300px;'/><br>
+        <p>農業部門為氣候變遷討論中複雜且敏感的議題，農業生產過程中所產生的甲烷和氧化亞氮為溫室氣體增加主因，佔全球溫室氣體排放 20％以上(IPCC2007,IPCC2014)。然而，農業生產環境及生物多樣性受到氣候變遷的破壞，農業及相關糧食部門也成為最脆弱的一環。同時，農業具有固碳功能，能夠提供碳匯給其他部門，達到組織碳中和目標。</p>
+        <p><img src='https://res.cloudinary.com/dsas30xds/image/upload/v1749808633/ChatGPT_Image_2025%E5%B9%B46%E6%9C%8813%E6%97%A5_%E4%B8%8B%E5%8D%8805_56_56_kqdlfa.png'style='height: 300px;'/><br>
+         <p>在台灣，農業溫室氣體只占二氧化碳總體排放量的 2.2%。在農委會升格為農業部後，舉行了多方會談，最終訂定提前於 2040 年以「減量、循環、增匯及綠趨勢」四大主軸來達到農業的淨零。宣告 2040 年減少農業部門溫室氣體排放 50%，約三百餘萬公噸 CO2 當量之溫室氣體排放量；增加農業碳匯 1,000 萬公噸；建立農林漁畜低碳永續循環場域 1,000 場、五百多萬公噸農業剩餘資源妥善利用處理、農業綠能發電滿足農業用電達 100%並提供全國 40%綠電等一連串助力農業淨零碳排之策略，距離 2040 年，只剩十餘年，各縣市進行產業碳盤整及減量已迫在眉睫。</p>
+         <p><img src='https://res.cloudinary.com/dsas30xds/image/upload/v1749809006/ChatGPT_Image_2025%E5%B9%B46%E6%9C%8813%E6%97%A5_%E4%B8%8B%E5%8D%8806_03_06_eepyyl.png'style='height: 300px;'/><br>
+          <p>屏東縣為農業大縣，自然環境和氣候條件有利於多種作物的種植，因此在農業碳匯上具有相當潛力。再者，屏東縣內具有包含屏東科技大學等多個學術與研發單位，因此具有先進的農業技術和管理方法，例如可利用智慧農業技術和碳封存技術，進一步減少碳排放並增加碳的封存量。然而，目前屏東縣仍無具體的減碳及增匯的路徑，因此有必要以此平台為屏東縣之農漁牧等產業規畫淨零策略。本案擬依循農業部之「減量、循環、增匯及綠趨勢」四大主軸來輔導屏東縣之農林漁牧產業，並建構農業減碳平台達到視覺化檢視碳管理效果，以達成淨零碳排目標。此平台執行時將透過產、官、學的合作，推動農業永續發展和環境保護措施，使屏東縣成為農業淨零碳排的典範，同時為當地經濟發展和社會進步做出積極貢獻。 </p>
+          <p><img src='https://res.cloudinary.com/dsas30xds/image/upload/v1749809340/1023x768_wmky_0_C20240719000138_rtgnmk.jpg'style='height: 300px;'/><br>
+          <p>圖片來源:中央社   網址https://netzero.cna.com.tw/news/202407190177/ </p>
+      </div>
+    `
+            about3_content = `
+      <div class="col-12 col-md-9 p-4">
+        <h3>主要工作</h3>
+        <p>這裡是主要工作的內容。</p>
+      </div>
+    `
+            about4_content = `
+      <div class="col-12 col-md-9 p-4">
+        <h3>組織架構</h3>
+        <p>這裡是組織架構的內容。</p>
+      </div>
+    `
+            about5_content = `
+      <div class="col-12 col-md-9 p-4">
+        <h3>未來展望</h3>
+        <p>這裡是未來展望的內容。這裡是未來展望的內容。這裡是未來展望的內容。這裡是未來展望的內容。這裡是未來展望的內容。這裡是未來展望的內容。這裡是未來展望的內容。這裡是未來展望的內容。這裡是未來展望的內容。這裡是未來展望的內容。這裡是未來展望的內容。這裡是未來展望的內容。這裡是未來展望的內容。這裡是未來展望的內容。這裡是未來展望的內容。這裡是未來展望的內容。這裡是未來展望的內容。這裡是未來展望的內容。這裡是未來展望的內容。這裡是未來展望的內容。這裡是未來展望的內容。這裡是未來展望的內容。這裡是未來展望的內容。這裡是未來展望的內容。這裡是未來展望的內容。這裡是未來展望的內容。這裡是未來展望的內容。這裡是未來展望的內容。這裡是未來展望的內容。這裡是未來展望的內容。這裡是未來展望的內容。這裡是未來展望的內容。這裡是未來展望的內容。這裡是未來展望的內容。這裡是未來展望的內容。這裡是未來展望的內容。這裡是未來展望的內容。這裡是未來展望的內容。這裡是未來展望的內容。這裡是未來展望的內容。這裡是未來展望的內容。這裡是未來展望的內容。這裡是未來展望的內容。這裡是未來展望的內容。這裡是未來展望的內容。</p>
+      </div>
+    `
+            about6_content = `
+      <div class="col-12 col-md-9 p-4">
+        <h3>編制及設備</h3>
+        <p>這裡是編制及設備的內容。</p>
+      </div>
+    `
+             function loadNextBatch() {
+            var newsList = $('#news-list');
+            var nextBatch = cdata.slice(currentIndex, currentIndex + batchSize);
+
+            nextBatch.forEach(function (item,index) {
+                let fileLink = '';
+                if (item.file_name && item.file_name.trim() !== '') {
+                    const fileName = item.file_name.trim().toLowerCase();
+                    const fileUrl = `https://kevinham218.github.io/webtest/files/${item.file_name}`;
+                    const imageExtensions = ['.jpg', '.jpeg', '.png', '.gif', '.bmp', '.webp'];
+
+                    const isImage = imageExtensions.some(ext => fileName.endsWith(ext));
+
+                    if (isImage) {
+                        fileLink = `<img src="${fileUrl}" alt="${item.file_name}" style="max-height: 150px;">`;
+                    } else {
+                        fileLink = `🗂️ <a href="${fileUrl}" download>${item.file_name}</a>`;
+                    }
+                }
+
+                var html = `
+                    <li class="mb-3 news-item" data-index="${currentIndex + index}">
+                        <div class="news-title fw-bold mb-1">${item.title}</div>
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div class="news-summary flex-grow-1">
+                                ${item.summary}
+                            </div>
+                            <div class="news-file text-end ms-3">
+                                ${fileLink}
+                            </div>
+                        </div>
+                        <div class="news-date text-muted mt-1">${item.date}</div>
+                    </li>
+                `;
+                newsList.append(html);
+            });
+
+            currentIndex += batchSize;
+
+            
+            if (currentIndex >= cdata.length) {
+                $('.btn-more').hide();
+            }
+        }
+
+         $(document).on('click', '.news-item', function () {
+                currentNewsIndex = $(this).data('index');
+                showNewsDetail(currentNewsIndex);
+            });
+            function showNewsDetail(index) {
+                const item = cdata[index];
+                if (!item) return;
+
+                let fileLink = '';
+                if (item.file_name && item.file_name.trim() !== '') {
+                    const fileName = item.file_name.trim().toLowerCase();
+                    const fileUrl = `https://kevinham218.github.io/webtest/files/${item.file_name}`;
+                    const imageExtensions = ['.jpg', '.jpeg', '.png', '.gif', '.bmp', '.webp'];
+                    const isImage = imageExtensions.some(ext => fileName.endsWith(ext));
+
+                    if (isImage) {
+                        fileLink = `<img src="${fileUrl}" alt="${item.file_name}" style="max-height: 150px;">`;
+                    } else {
+                        fileLink = `🗂️ <a href="${fileUrl}" download>${item.file_name}</a>`;
+                    }
+                }
+
+                const detailHtml = `
+      <div class="container">
+        <div class="col-12 col-md-9 p-4">
+          <h3>${item.title}</h3>
+          <hr style="border: 2px solid red; width: 100%;">
+          <p>${item.date}</p>
+          <p>
+            <span style="font-size:14px;color:red">
+              資料來源: ${item.source}&emsp;&emsp;
+              資料來源網址: <a href="${item.sourceurl}" class="break-url" target="_blank">${item.sourceurl}</a>
+            </span>
+          </p>
+          <p>${item.summary}</p>
+          <br>
+          ${fileLink}
+          <br><br><br>
+          <div class="d-flex justify-content-around w-100">
+            <button type="button" class="btn btn-dark btn-prev">上一個</button>
+            <button type="button" class="btn btn-dark btn-home">首頁</button>
+            <button type="button" class="btn btn-dark btn-next">下一個</button>
+          </div>
+        </div>
+      </div>
+    `;
+
+                $("#content").html(detailHtml);
+            }
+        function homeconten() {
+            $.ajax({
+                url: "https://kevinham218.github.io/webtest/data.json?t=" + new Date().getTime(),
+                method: "GET",
+                success: function (data) {
+                    cdata = data;
+                    currentIndex = 0;
+                    $('#news-list').empty();
+                    loadNextBatch(); 
+                    $('#update').text(`更新日期：${data[0].date}`);
+                },
+                error: function (xhr, status, error) {
+                    console.error(error);
+                }
+            });
+        }
+            homeconten()
+            $("#home").on("click", function () {
+                console.log("home clicked");
+                $("#content").html('<p>載入中...</p>');
+                $("#content").html(contentclass);
+                homeconten()
+
+            });
+            $(document).on('click', '.btn-more', function () {
+    loadNextBatch();
+});
+            $("#db1").on("click", function () {
+                $("#content").html(`
+                    <iframe src="https://app.powerbi.com/view?r=eyJrIjoiYTQ1OWQ0YjEtOWE1OS00NjQ5LWFjMDAtZGVmMzUzYjQ3ZjM0IiwidCI6Ijg4NjI0N2VmLWFjZTktNDQ4Yy05NDMzLTZmNjkzZmI5MGE2OCIsImMiOjEwfQ%3D%3D
+" 
+                            style="width:100%; height:100vh; border:none;"></iframe>
+                `);
+            })
+            $("#db2").on("click", function () {
+                $("#content").html(`
+                    <iframe src="https://app.powerbi.com/view?r=eyJrIjoiMDAzOWM3OGYtY2E4Yy00Y2JhLTg4ODUtM2JjZDU5ZTk4ZTRmIiwidCI6Ijg4NjI0N2VmLWFjZTktNDQ4Yy05NDMzLTZmNjkzZmI5MGE2OCIsImMiOjEwfQ%3D%3D
+" 
+                            style="width:100%; height:100vh; border:none;"></iframe>
+                `);
+            })
+            $("#db3").on("click", function () {
+                $("#content").html(`
+                    <iframe src="https://app.powerbi.com/view?r=eyJrIjoiM2RiYjAzNzItZmUzZC00ZDUwLTkxMjUtOTU3ZjY1MmRkZDc0IiwidCI6Ijg4NjI0N2VmLWFjZTktNDQ4Yy05NDMzLTZmNjkzZmI5MGE2OCIsImMiOjEwfQ%3D%3D
+" 
+                            style="width:100%; height:100vh; border:none;"></iframe>
+                `);
+            })
+
+            $("#about1").on("click", function () {
+                $("#content").html(t);
+                const $row = $("#content .row");
+                $row.append(about1_content);
+            });
+            $("#about2").on("click", function () {
+                $("#content").html(t);
+                const $row = $("#content .row");
+                $row.append(about2_content);
+            })
+            $("#about3").on("click", function () {
+                $("#content").html(t);
+                const $row = $("#content .row");
+                $row.append(about3_content);
+            })
+            $("#about4").on("click", function () {
+                $("#content").html(t);
+                const $row = $("#content .row");
+                $row.append(about4_content);
+            })
+            $("#about5").on("click", function () {
+                $("#content").html(t);
+                const $row = $("#content .row");
+                $row.append(about5_content);
+            })
+            $("#about6").on("click", function () {
+                $("#content").html(t);
+                const $row = $("#content .row");
+                $row.append(about6_content);
+            })
+            $('#carousel_id').on('click', 'img', function () {
+                const index = $(this).attr('id').replace('carousel_img', '');
+                console.log(index)
+                $("#content").html(`
+    <div class="container">
+      <div class="col-12 col-md-9 p-4">
+        <h3>${cdata2[index].title}</h3>
+        <hr style="border: 2px solid red; width: 100%;">
+        <p>${cdata2[index].date}</p>
+        <p><span style="font-size:14px;color:red">資料來源:${cdata2[index].source}&emsp;&emsp;資料來源網址:<a href="${cdata2[index].sourceurl}" class="break-url" target="_blank">${cdata2[index].sourceurl}</a></span></p>
+        <p>${cdata2[index].summary}</p>
+      </div>
+      </div>
+    `);
+                console.log(cdata)
+            });
+            $(document).on('click', '.btn-prev', function () {
+                if (currentNewsIndex > 0) {
+                    currentNewsIndex--;
+                    showNewsDetail(currentNewsIndex);
+                }
+            });
+
+            $(document).on('click', '.btn-next', function () {
+                if (currentNewsIndex < cdata.length - 1) {
+                    currentNewsIndex++;
+                    showNewsDetail(currentNewsIndex);
+                }
+            });
+
+            $(document).on('click', '.btn-home', function () {
+                location.reload();
+                homeconten()
+            });
+        })
+        $("#content").on("click", "[data-page]", function (e) {
+            e.preventDefault();
+
+            const page = $(this).data("page");
+            const $row = $("#content .row");
+
+            $row.find(".col-md-9").remove();
+
+            let content = "";
+            if (page === "about") {
+                content = about1_content;
+            } else if (page === "history") {
+                content = about2_content;
+            } else if (page === "main") {
+                content = about3_content;
+            } else if (page === "organize") {
+                content = about4_content;
+            } else if (page === "future") {
+                content = about5_content;
+            } else if (page === "machine") {
+                content = about6_content;
+            }
+
+            $row.append(content);
+        });
+    </Script>
+</body>
+
+</html>
